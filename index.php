@@ -22,7 +22,7 @@ if (isset($_GET['search'])) {
     $search_query = $_GET['search'];
 
     // ดึงข้อมูลเพลงตามการค้นหา
-    $sql = "SELECT * FROM songs WHERE title LIKE :search_query OR artist LIKE :search_query";
+    $sql = "SELECT * FROM songs WHERE title LIKE :search_query OR artist_name LIKE :search_query";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['search_query' => '%' . $search_query . '%']);
     $songs = $stmt->fetchAll(PDO::FETCH_ASSOC);
